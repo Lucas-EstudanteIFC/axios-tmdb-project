@@ -30,15 +30,21 @@ onMounted(async () => {
                 <p>Avaliação: {{ movieStore.currentMovie.vote_average }}</p>
             </div>
         </div>
-
-        <div class="companies">
-            <p class="companies-title">Produtoras</p>
-            <template v-for="company in movieStore.currentMovie.production_companies" :key="company.id">
-                <img v-if="company.logo_path" :src="`https://image.tmdb.org/t/p/w92${company.logo_path}`"
-                    :alt="company.name" />
-                <p v-else>{{ company.name }}</p>
-            </template>
-        </div>
+        
+        <p>Produtoras</p>
+  <div class="companies">
+    <template
+      v-for="company in movieStore.currentMovie.production_companies"
+      :key="company.id"
+    >
+      <img
+        v-if="company.logo_path"
+        :src="`https://image.tmdb.org/t/p/w92${company.logo_path}`"
+        :alt="company.name"
+      />
+      <p v-else>{{ company.name }}</p>
+    </template>
+  </div>
     </div>
 
 </template>
@@ -65,7 +71,10 @@ onMounted(async () => {
 
 .content,
 .companies {
-    margin-left: 10vw;
-    margin-right: 10vw;
-}
+    display: flex;
+    flex-direction: row;
+    column-gap: 3rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
 </style>

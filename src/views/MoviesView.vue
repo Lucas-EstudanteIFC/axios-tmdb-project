@@ -4,12 +4,15 @@ import api from '@/plugins/axios';
 import Loading from 'vue-loading-overlay';
 import { useGenreStore } from '@/stores/genre';
 import { useRouter } from 'vue-router';
+import { useActorStore} from '@/stores/actor';
 
 const isLoading = ref(false);
 const genres = ref([]);
 const movies = ref([]);
 const genreStore = useGenreStore();
+const actorStore = useActorStore();
 const router = useRouter();
+
 onMounted(async () => {
     isLoading.value = true;
     await genreStore.getAllGenres('movie');
@@ -35,14 +38,14 @@ const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
 function openMovie(movieId) {
   router.push({ name: 'MovieDetails', params: { movieId } });
 }
-</script>
+</script>import { useRouter } from 'vue-router'
+const router = useRouter()
 
 <template>
     <h1>Filmes</h1>
     <ul class="genre-list">
         <li v-for="genre in genreStore.genres" :key="genre.id" @click="listMovies(genre.id)" class="genre-item"
             :class="{ active: genre.id === genreStore.currentGenreId }">
-
             {{ genre.name }}
 
         </li>
