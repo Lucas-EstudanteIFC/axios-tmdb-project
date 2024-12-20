@@ -4,13 +4,13 @@ import api from '@/plugins/axios';
 import Loading from 'vue-loading-overlay';
 import { useGenreStore } from '@/stores/genre';
 import { useRouter } from 'vue-router';
-import { useActorStore} from '@/stores/actor';
+// import { useActorStore} from '@/stores/actor';
 
 const isLoading = ref(false);
 const genres = ref([]);
 const movies = ref([]);
 const genreStore = useGenreStore();
-const actorStore = useActorStore();
+// const actorStore = useActorStore();
 const router = useRouter();
 
 onMounted(async () => {
